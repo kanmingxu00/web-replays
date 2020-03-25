@@ -7,12 +7,14 @@ export default class Main extends Component {
             switchstate: false,
         }
         this.handleClick = this.handleClick.bind(this)
-        this.onPress = this.props.onPress
+        this.onPress = this.props.onPress.bind(this)
+
     }
 
     handleClick() {
-        this.onPress()
+        this.onPress();
     }
+
 
     render() {
         return (

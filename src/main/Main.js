@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 // import './Main.css';
 import Upload from './upload/Upload.js'
 import Replay from './replay/Replay.js'
-import SwitchButton from './SwitchButton.js'
 
 export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             switchstate: false,
+            text: '',
         }
-        this.onPress = this.onPress.bind(this)
+        this.onPress = this.onPress.bind(this);
+        this.updateText = this.updateText.bind(this);
+    }
+
+    renderInner() {
+        return this.state.switchstate ? <Replay text={this.state.text} /> : <Upload onPress={this.onPress} updateText={this.updateText} />
     }
 
     onPress() {
@@ -19,14 +24,16 @@ export default class Main extends Component {
         })
     }
 
-    renderInner() {
-        return this.state.switchstate ? <Replay /> : <Upload />
-    }
+    updateText(matchid) {
+        this.setState({
+            text: matchid
+        })
+
+    } 
 
     render() {
         return (
-            <div>
-                <SwitchButton onPress={this.onPress} /> 
+            <div> 
                 {this.renderInner()}
             </div>
             

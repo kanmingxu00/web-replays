@@ -4,11 +4,12 @@ import './Replay.css';
 export default class Replay extends Component {
     constructor(props) {
         super(props);
+        this.text = this.props.text;
     }
     render() {
         return (
             <div>
-                You just posted cringe
+                Replay id: {this.text}
             </div>
         )
     }
