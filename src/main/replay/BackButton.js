@@ -8,6 +8,7 @@ export default class Main extends Component {
         }
         this.handleClick = this.handleClick.bind(this)
         this.onPress = this.props.onPress.bind(this)
+        this.buttonText = this.props.buttonText;
 
     }
 
@@ -18,7 +19,9 @@ export default class Main extends Component {
 
     render() {
         return (
-            <button onClick={this.handleClick} />
+            <button onClick={this.handleClick}>
+                {this.buttonText}
+            </button>
         )
     }
 }

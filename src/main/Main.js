@@ -15,12 +15,12 @@ export default class Main extends Component {
     }
 
     renderInner() {
-        return this.state.switchstate ? <Replay text={this.state.text} /> : <Upload onPress={this.onPress} updateText={this.updateText} />
+        return this.state.switchstate ? <Replay onPress={this.onPress} text={this.state.text} /> : <Upload onPress={this.onPress} updateText={this.updateText} />
     }
 
     onPress() {
         this.setState({
-            switchstate: true
+            switchstate: !this.state.switchstate
         })
     }
 
