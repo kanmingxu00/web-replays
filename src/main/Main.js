@@ -22,6 +22,7 @@ export default class Main extends Component {
         this.setState({
             switchstate: !this.state.switchstate
         })
+        //console.log(this.state.text);
     }
 
     updateText(matchid) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Upload.scss';
 import TextBox from './TextBox.js';
-import UploadButton from './UploadButton.js';
+import SubmitButton from './SubmitButton.js';
 
 export default class Upload extends Component {
     constructor(props) {
@@ -17,8 +17,8 @@ export default class Upload extends Component {
         return (
             <div>
                 <div>
-                    <TextBox onPress={this.onPress} updateText={this.updateText} />
-                    <UploadButton />
+                    <TextBox updateText={this.updateText} />
+                    <SubmitButton onPress={this.onPress} buttonText={'Submit'}/>
                 </div>
                 Upload
             </div>
