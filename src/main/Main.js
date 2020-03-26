@@ -15,21 +15,19 @@ export default class Main extends Component {
     }
 
     renderInner() {
-        return this.state.switchstate ? <Replay onPress={this.onPress} text={this.state.text} /> : <Upload onPress={this.onPress} updateText={this.updateText} />
+        return this.state.switchstate ? <Replay onPress={this.onPressReplay} text={this.state.text} /> : <Upload onPress={this.onPress} updateText={this.updateText} />
     }
 
-    onPress() {
-        this.setState({
-            switchstate: !this.state.switchstate
-        })
-        //console.log(this.state.text);
-    }
+    onPressReplay = () => this.setState({ switchstate: false });
 
-    updateText(matchid) {
+    onPress = (text) => {
+        console.log(text)
         this.setState({
-            text: matchid,
+            switchstate: true,
         });
-    } 
+    };
+    
+    updateText = (matchid) => this.setState({ text: matchid });
 
     render() {
         return (
