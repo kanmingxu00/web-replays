@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 export default class Main extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            
+        }
         this.handleChange = this.handleChange.bind(this)
         this.updateText = this.props.updateText.bind(this)
     }
