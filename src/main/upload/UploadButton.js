@@ -18,7 +18,7 @@ export default class Main extends Component {
 
     render() {
         return (
-            <input type="file" name="file" onChange={this.onChangeHandler}/>
+            <input type="file" className={this.props.className} name="file" onChange={this.onChangeHandler}/>
         );
     }
 

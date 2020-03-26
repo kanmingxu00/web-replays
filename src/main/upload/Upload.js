@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Upload.scss';
 import TextBox from './TextBox.js';
 import SubmitButton from './SubmitButton.js';
+import UploadButton from './UploadButton.js';
 
 export default class Upload extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class Upload extends Component {
             <div>
                 <div>
                     <TextBox updateText={this.updateText} />
+                    <UploadButton className="FileSelect"/>
                     <SubmitButton onPress={this.onPress} buttonText={'Submit'}/>
                 </div>
                 Upload
