@@ -25,7 +25,7 @@ export default class Main extends Component {
                 <div>
                     {this.state.switchstate ?
                     <Replay onPress={this.onPressReplay} text={this.state.text} /> : 
-                    <Upload onPress={this.onPress} updateText={this.updateText} updateFile={this.updateFile}/> }
+                    <Upload onPress={this.onPress} text={this.state.text} updateText={this.updateText} updateFile={this.updateFile}/> }
                 </div> 
             </div>
 

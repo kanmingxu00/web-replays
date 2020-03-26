@@ -19,7 +19,7 @@ export default class Upload extends Component {
 
     async callServer() {
         let fakeAPI = new Promise((resolve, reject) => {
-            setTimeout(() => resolve("nice"), 1000)
+            setTimeout(() => resolve(this.props.text), 1000)
         })
         let result = await fakeAPI;
 
