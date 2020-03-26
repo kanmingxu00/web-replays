@@ -5,11 +5,11 @@ export default class Main extends Component {
         super(props);
         this.state = {
             text: '',
-        }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.onPress = this.props.onPress.bind(this)
-        this.updateText = this.props.updateText.bind(this)
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.onPress = this.props.onPress.bind(this);
+        this.updateText = this.props.updateText.bind(this);
 
     }
 

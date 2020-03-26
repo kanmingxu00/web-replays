@@ -26,17 +26,15 @@ export default class Main extends Component {
 
     updateText(matchid) {
         this.setState({
-            text: matchid
-        })
-
+            text: matchid,
+        });
     } 
 
     render() {
         return (
             <div> 
                 {this.renderInner()}
-            </div>
-            
+            </div>  
         )
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BackButton from './BackButton.js';
-import './Replay.css';
+import './Replay.scss';
 
 
 export default class Replay extends Component {
