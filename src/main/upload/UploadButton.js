@@ -7,13 +7,16 @@ export default class Main extends Component {
             selectedFile: '',
         };
         this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.updateFile = this.props.updateFile.bind(this);
     }
 
     onChangeHandler(e) {
-        if (e.target.files.length != 1) {
+        if (e.target.files.length !== 1) {
             console.log("must submit 1 file");
+        } else if (e.target.files.length === 1) {
+            //console.log(e.target.files[0].name);
+            this.updateFile(e.target.files[0]);
         }
-        console.log(e.target.files[0]);
     }
 
     render() {

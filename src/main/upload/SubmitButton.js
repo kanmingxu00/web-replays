@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SubmitButton.scss';
+import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 
@@ -21,16 +22,16 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                {true ? 
+                {!this.props.loading ? 
                 <button className={this.props.className} onClick={this.handleClick}>
                     {this.buttonText}
                 </button> :
                 <Loader
-                    type="Puff"
+                    type="TailSpin"
                     color="#00BFFF"
                     height={100}
                     width={100}
-                    timeout={3000} //3 secs
+                    timeout={0} //3 secs
                 />}
             </div>
         );

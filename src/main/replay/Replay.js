@@ -11,13 +11,11 @@ export default class Replay extends Component {
 
     }
 
-
     render() {
         return (
             <div>
                 <BackButton onPress={this.onPress} buttonText={'Back'}/>
                 Replay id: {this.text}
-
             </div>
         )
     }

@@ -9,24 +9,35 @@ export default class Upload extends Component {
         super(props);
         this.state = {
             selector: false,
+            loading: false,
         };
         this.onPress = this.onPress.bind(this)
+        this.onP = this.onP.bind(this)
         this.updateText = this.props.updateText;
+        this.updateFile = this.props.updateFile;
     }
 
     async callServer() {
-        let fakeAPI = new Promise(() => {
-            setTimeout(() => "nice", 3000)
+        let fakeAPI = new Promise((resolve, reject) => {
+            setTimeout(() => resolve("nice"), 1000)
         })
-        
         let result = await fakeAPI;
 
         return Promise.resolve(result)
     }
 
+    onP(event) {
+        this.setState({
+            loading: false,
+        })
+        this.props.onPress(event)
+    }
+
     onPress() {
-        onP = this.props.onPress;
-        this.callServer().then(onP)
+        this.setState({
+            loading: true,
+        })
+        this.callServer().then(this.onP)
     }
     
     render() {
@@ -34,11 +45,10 @@ export default class Upload extends Component {
             <div>
                 <div>
                     <TextBox className="IdSelect" updateText={this.updateText} />
-                    <UploadButton className="FileSelect" />
+                    <UploadButton className="FileSelect" updateFile={this.updateFile}/>
                 </div>
                 <div>
-                    <SubmitButton onPress={this.onPress} buttonText={'Submit'}>
-                    </SubmitButton>
+                    <SubmitButton loading={this.state.loading} onPress={this.onPress} buttonText={'Submit'} />
                 </div>
             </div>
         );
