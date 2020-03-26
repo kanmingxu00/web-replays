@@ -3,11 +3,12 @@
     background: azure;
     color: azure;
     padding: .75em 1.5em;
-    width: 30em !important;
+    // width: 30em !important;
     text-align: center;
     border: 1px solid #b7b7b7;
     -webkit-border-radius: 3em;
-    font-size: 24px; 
+    // font-size: 24px; 
+    margin-left: 2em;
     color: rgb(0, 74, 104);
     -o-text-overflow: clip;
     text-overflow: clip;
@@ -20,20 +21,21 @@
 }
 
 .IdSelect {
-    background-color: beige;
-    color: beige;
-    background: beige;
-    padding: .75em 1.5em;
-    width: 30em !important;
+    background-color: azure;
+    background: azure;
+    color: azure;
+    padding: .5em 1em;
+    // width: 30em !important;
     text-align: center;
     border: 1px solid #b7b7b7;
     -webkit-border-radius: 3em;
-    font-size: 24px; 
+    font-size: 19px; 
+    margin-left: 2em;
     color: rgb(0, 74, 104);
     -o-text-overflow: clip;
     text-overflow: clip;
     box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
-    text-shadow: 1.5px 1.5px 0 rgba(0,0,0,0.2);
+    // text-shadow: 1.5px 1.5px 0 rgba(0,0,0,0.2);
     -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);

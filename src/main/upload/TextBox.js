@@ -4,7 +4,6 @@ export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
         }
         this.handleChange = this.handleChange.bind(this)
         this.updateText = this.props.updateText.bind(this)
@@ -17,8 +16,13 @@ export default class Main extends Component {
     render() {
         return(
             <label>
-              Match id:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+                <input
+                    type="text" 
+                    className={this.props.className} 
+                    value={this.state.value} 
+                    onChange={this.handleChange}
+                    placeholder="Match ID"
+                />
             </label>
           
         )

@@ -18,11 +18,12 @@ export default class Upload extends Component {
         return (
             <div>
                 <div>
-                    <TextBox updateText={this.updateText} />
+                    <TextBox className="IdSelect" updateText={this.updateText} />
                     <UploadButton className="FileSelect"/>
+                </div>
+                <div>
                     <SubmitButton onPress={this.onPress} buttonText={'Submit'}/>
                 </div>
-                Upload
             </div>
         );
     }
