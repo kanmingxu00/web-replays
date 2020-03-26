@@ -12,6 +12,7 @@ export default class Upload extends Component {
         };
         this.onPress = this.props.onPress;
         this.updateText = this.props.updateText;
+        this.updateFile = this.props.updateFile;
     }
 
     render() {
@@ -19,7 +20,7 @@ export default class Upload extends Component {
             <div>
                 <div>
                     <TextBox className="IdSelect" updateText={this.updateText} />
-                    <UploadButton className="FileSelect"/>
+                    <UploadButton className="FileSelect" updateFile={this.updateFile}/>
                 </div>
                 <div>
                     <SubmitButton onPress={this.onPress} buttonText={'Submit'}/>
