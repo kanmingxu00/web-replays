@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SubmitButton.scss';
 
 export default class Main extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class Main extends Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>
+            <button className={this.props.className} onClick={this.handleClick}>
                 {this.buttonText}
             </button>
         );
