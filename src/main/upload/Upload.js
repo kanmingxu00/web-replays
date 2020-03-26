@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Upload.css';
 import TextBox from './TextBox.js';
-import UploadButton from './UploadButton.js';
+import SubmitButton from './SubmitButton.js';
 
 export default class Upload extends Component {
     constructor(props) {
