@@ -14,8 +14,8 @@ export default class Upload extends Component {
         return (
             <div>
                 <div>
-                    <TextBox onPress={this.onPress} updateText={this.updateText} />
-                    <UploadButton />
+                    <TextBox updateText={this.updateText} />
+                    <SubmitButton onPress={this.onPress} buttonText={'Submit'}/>
                 </div>
                 Upload
             </div>
