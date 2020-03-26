@@ -12,7 +12,7 @@ export default class Main extends Component {
 
     render() {
         return (
-            <label> test </label>
+            <input type="file" name="file" onChange={this.onChangeHandler}/>
         );
 
     }

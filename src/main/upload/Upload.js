@@ -13,8 +13,10 @@ export default class Upload extends Component {
     render() {
         return (
             <div>
-                <TextBox onPress={this.onPress} updateText={this.updateText} />
-                
+                <div>
+                    <TextBox onPress={this.onPress} updateText={this.updateText} />
+                    <UploadButton />
+                </div>
                 Upload
             </div>
         )
