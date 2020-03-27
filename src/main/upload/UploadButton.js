@@ -21,8 +21,11 @@ export default class Main extends Component {
 
     render() {
         return (
-            <input type="file" className={this.props.className} name="file" onChange={this.onChangeHandler}/>
-        );
+		<div>
+            <input id="fileSelect" type="file" className={this.props.className} name="file" onChange={this.onChangeHandler}/>
+			<label class="button" htmlFor="fileSelect">Upload File</label>
+        </div>
+		);
     }
 
 }
