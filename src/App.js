@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Nice Web Replays
+          Watch Dota in your browser
         </p>
         <Main />
       </header>

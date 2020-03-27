@@ -85,6 +85,8 @@ export default class Upload extends Component {
         }
     }
     
+    //TODO: george
+    //An 'x' button next to the upload button to clear the currently selected file
     render() {
         return (
             <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
@@ -96,12 +98,13 @@ export default class Upload extends Component {
                     <TextBox className="IdSelect" updateText={this.updateText} />
                      
                         
-                            <UploadButton className={"FileSelect"} updateFile={this.updateFile}/>
+                    <UploadButton className={"FileSelect"} updateFile={this.updateFile}/>
                         
                     
                 </div>
                 <div>
-                    <SubmitButton loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile} />
+
+                    <SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile}/>
                 </div>
             </div>
             </Dropzone>
