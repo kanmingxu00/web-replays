@@ -19,12 +19,17 @@ export default class Main extends Component {
         this.onPress();
     }
 
+    getButtonText() {
+        return 'Watch ' + (this.props.selectedFile !== '' ? this.props.selectedFile.name : this.props.text);
+
+    }
+
     render() {
         return (
             <div>
                 {!this.props.loading ? 
                 <button className={this.props.className} onClick={this.handleClick}>
-                    {this.buttonText}
+                    {this.getButtonText()}
                 </button> :
                 <Loader
                     type="TailSpin"

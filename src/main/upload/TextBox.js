@@ -24,6 +24,7 @@ export default class Main extends Component {
                     onChange={this.handleChange}
                     placeholder="Match ID"
                 />
+                
             </label>
           
         )
