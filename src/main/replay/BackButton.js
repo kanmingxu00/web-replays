@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './BackButton.scss'
 
 export default class Main extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ export default class Main extends Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>
+            <button className="BackButton" onClick={this.handleClick}>
                 {this.buttonText}
             </button>
         )
