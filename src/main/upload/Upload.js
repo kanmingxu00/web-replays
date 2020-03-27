@@ -41,7 +41,7 @@ export default class Upload extends Component {
         this.props.onPress(event)
     }
 
-    /*TODO: 
+    /*TODO: george
         File type validation
             - Check file extension and file header?
         Match id validation
