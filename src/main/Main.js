@@ -32,12 +32,9 @@ export default class Main extends Component {
         )
     }
 
-
-
     onPress = (file) => {
-        console.log("is this getting triggered")
-        this.updateText(file)
-        this.setState({ switchstate: true })
+        this.updateText(file);
+        this.setState({ switchstate: true });
     }
 
     onPressReplay = () => {
@@ -57,7 +54,7 @@ export default class Main extends Component {
     render() {
         return (
             <div> 
-                {this.renderInner()}
+                { this.renderInner() }
             </div>  
         )
     }

@@ -13,6 +13,7 @@ export default class Main extends Component {
     onChangeHandler(e) {
         if (e.target.files.length !== 1) {
             console.log("must submit 1 file");
+            this.updateFile('');
         } else if (e.target.files.length === 1) {
             console.log(e.target.files[0]);
             this.updateFile(e.target.files[0]);
