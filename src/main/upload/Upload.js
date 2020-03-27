@@ -48,7 +48,7 @@ export default class Upload extends Component {
                     <UploadButton className="FileSelect" updateFile={this.updateFile}/>
                 </div>
                 <div>
-                    <SubmitButton loading={this.state.loading} onPress={this.onPress} buttonText={'Submit'} />
+                    <SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} buttonText={'Submit'} />
                 </div>
             </div>
         );
