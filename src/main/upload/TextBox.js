@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Textbox.scss';
 
 export default class Main extends Component {
     constructor(props) {
@@ -21,8 +22,9 @@ export default class Main extends Component {
                     className={this.props.className} 
                     value={this.state.value} 
                     onChange={this.handleChange}
-                    placeholder="Match ID"
+                    placeholder="Enter Match ID"
                 />
+                
             </label>
           
         )

@@ -16,28 +16,36 @@ export default class Main extends Component {
         this.updateText = this.updateText.bind(this);
         this.updateFile = this.updateFile.bind(this);
 
+        //this.ref = React.createRef();
+        
     }
+
+    componentDidMount() {
+        //this.ref.current.addEventListener('dragenter', this.handleDragIn);
+    }
+
+    handleDragIn(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
 
     renderInner() {
         return (
             <div>
-                <label> { this.state.selectedFile !== '' ? this.state.selectedFile.name : this.state.text } </label>
                 <div>
                     {this.state.switchstate ?
                     <Replay onPress={this.onPressReplay} text={this.state.text} /> : 
-                    <Upload onPress={this.onPress} text={this.state.text} updateText={this.updateText} updateFile={this.updateFile}/> }
+                    <Upload onPress={this.onPress} text={this.state.text} selectedFile={this.state.selectedFile} updateText={this.updateText} updateFile={this.updateFile}/> }
                 </div> 
             </div>
 
         )
     }
 
-
-
     onPress = (file) => {
-        console.log("is this getting triggered")
-        this.updateText(file)
-        this.setState({ switchstate: true })
+        this.updateText(file);
+        this.setState({ switchstate: true });
     }
 
     onPressReplay = () => {
@@ -57,7 +65,7 @@ export default class Main extends Component {
     render() {
         return (
             <div> 
-                {this.renderInner()}
+                { this.renderInner() }
             </div>  
         )
     }

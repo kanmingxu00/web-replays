@@ -1,5 +1,3 @@
-
-
 ::placeholder{
 	color: azure;
 }
@@ -9,7 +7,7 @@ input:focus::-webkit-input-placeholder{
 }
 
 .button {
-	margin: 2px 4px;
+	margin: auto;
 }
 
 .FileSelect {
@@ -74,4 +72,24 @@ input[type="file"]+ label:hover {
 	background-color: azure;
 	border-color: #0099ff;
 	color: #0099ff;
+}
+
+.ClearButton {
+	background-color: #0099ff;
+	border: none;
+	color: azure;
+	padding: 10px 20px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 16px;
+	border-radius: 8px;
+	transition-duration: .2s;
+    
+}
+
+.ClearButton:hover {
+	background-color: azure;
+	border-color: #0099ff;
+	color: #0099ff;
+
 }
