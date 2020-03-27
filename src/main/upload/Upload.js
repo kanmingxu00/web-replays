@@ -15,8 +15,7 @@ export default class Upload extends Component {
         };
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
-        //this.isValidDem = this.isValidDem.bind(this);
-        //this.isValidInteger = this.isValidInteger.bind(this);
+        
         this.updateText = this.props.updateText;
         this.updateFile = this.props.updateFile;
     }
@@ -95,7 +94,7 @@ export default class Upload extends Component {
                     <UploadButton className="FileSelect" updateFile={this.updateFile}/>
                 </div>
                 <div>
-                    <SubmitButton loading={this.state.loading} onPress={this.onPress} buttonText={'Submit'} />
+                    <SubmitButton loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile} />
                 </div>
             </div>
         );

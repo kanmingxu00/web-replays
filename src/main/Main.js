@@ -21,7 +21,6 @@ export default class Main extends Component {
     renderInner() {
         return (
             <div>
-                <label> { this.state.selectedFile !== '' ? this.state.selectedFile.name : this.state.text } </label>
                 <div>
                     {this.state.switchstate ?
                     <Replay onPress={this.onPressReplay} text={this.state.text} /> : 
