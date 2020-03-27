@@ -15,7 +15,7 @@ export default class Main extends Component {
 
     render() {
         return(
-            <label>
+            <label className="left-float">
                 <input
                     type="text" 
                     className={this.props.className} 
