@@ -16,7 +16,19 @@ export default class Main extends Component {
         this.updateText = this.updateText.bind(this);
         this.updateFile = this.updateFile.bind(this);
 
+        //this.ref = React.createRef();
+        
     }
+
+    componentDidMount() {
+        //this.ref.current.addEventListener('dragenter', this.handleDragIn);
+    }
+
+    handleDragIn(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
 
     renderInner() {
         return (

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Upload.scss';
 import TextBox from './TextBox.js';
 import SubmitButton from './SubmitButton.js';
-import UploadButton from './UploadButton.js';
 import Dropzone from './Dropzone.js';
+import UploadButton from './UploadButton.js';
+
 
 export default class Upload extends Component {
     constructor(props) {
@@ -86,22 +87,24 @@ export default class Upload extends Component {
     
     render() {
         return (
+            <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
             <div>
                 <div>
                     <label> {this.state.errorLabel}</label>
                 </div>
                 <div>
                     <TextBox className="IdSelect" updateText={this.updateText} />
-                    <Dropzone updateFile={this.updateFile} styleBorder="DropzoneBorder" styleCenter="DropzoneCenter"> 
-                        <div>
-                            <UploadButton className="FileSelect" updateFile={this.updateFile}/>
-                        </div>
-                    </Dropzone>
+                     
+                        
+                            <UploadButton className={"FileSelect"} updateFile={this.updateFile}/>
+                        
+                    
                 </div>
                 <div>
                     <SubmitButton loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile} />
                 </div>
             </div>
+            </Dropzone>
         );
     }
 }
