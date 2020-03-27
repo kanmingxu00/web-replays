@@ -21,7 +21,6 @@ export default class Main extends Component {
 
     getButtonText() {
         return 'Watch ' + (this.props.selectedFile !== '' ? this.props.selectedFile.name : this.props.text);
-
     }
 
     render() {

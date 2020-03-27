@@ -4,6 +4,10 @@ import TextBox from './TextBox.js';
 import SubmitButton from './SubmitButton.js';
 import Dropzone from './Dropzone.js';
 import UploadButton from './UploadButton.js';
+import StandardButton from '../StandardButton.js';
+
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 
 export default class Upload extends Component {
@@ -18,8 +22,10 @@ export default class Upload extends Component {
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
         
-        this.updateText = this.props.updateText;
-        this.updateFile = this.props.updateFile;
+        this.updateText = this.props.updateText.bind(this);
+        this.updateFile = this.props.updateFile.bind(this);
+
+        this.getSubmitButtonText = this.getSubmitButtonText.bind(this);
     }
 
     componentDidMount() {
@@ -85,9 +91,17 @@ export default class Upload extends Component {
         }
     }
     
+    getSubmitButtonText() {
+        console.log('get button text is called');
+        return 'Watch ' + (this.props.selectedFile !== '' ? this.props.selectedFile.name : this.props.text);
+    }
+
     //TODO: george
     //An 'x' button next to the upload button to clear the currently selected file
     render() {
+        //Old submit button: 
+        //<SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile}/>
+
         return (
             <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
             <div>
@@ -99,12 +113,22 @@ export default class Upload extends Component {
                      
                         
                     <UploadButton className={"FileSelect"} updateFile={this.updateFile}/>
+                    <StandardButton className={"ClearButton"} function={this.updateFile} funcParam={''} buttonText={'delete currently selected file! x'} />
                         
                     
                 </div>
                 <div>
 
-                    <SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile}/>
+                    {!this.state.loading ?
+                    <StandardButton function={this.onPress} buttonText={this.getSubmitButtonText} className="SubmitReplay"/>
+                    :
+                    <Loader
+                        type="TailSpin"
+                        color="#00BFFF"
+                        height={100}
+                        width={100}
+                        timeout={0} //3 secs
+                    />}
                 </div>
             </div>
             </Dropzone>

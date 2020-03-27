@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BackButton from './BackButton.js';
 import './Replay.scss';
+import StandardButton from '../StandardButton.js';
 
 
 export default class Replay extends Component {
@@ -12,9 +13,11 @@ export default class Replay extends Component {
     }
 
     render() {
+        //old button: <BackButton onPress={this.onPress} buttonText={'Back'}/>
         return (
             <div>
-                <BackButton onPress={this.onPress} buttonText={'Back'}/>
+                
+                <StandardButton function={this.onPress} buttonText={'Back'} />
                 Replay id: {this.text}
             </div>
         )
