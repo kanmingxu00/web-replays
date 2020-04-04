@@ -17,11 +17,11 @@ export default class Upload extends Component {
             selector: false,
             loading: false,
             errorLabel: '',
-            
+
         };
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
-        
+
         this.updateText = this.props.updateText.bind(this);
         this.updateFile = this.props.updateFile.bind(this);
 
@@ -29,7 +29,7 @@ export default class Upload extends Component {
     }
 
     componentDidMount() {
-        
+
     }
 
     async callServer() {
@@ -56,16 +56,16 @@ export default class Upload extends Component {
     onPress() {
         if (this.props.selectedFile !== '') { //Selected file exists 
             if (!this.isValidDem(this.props.selectedFile)) {
-                this.setState({errorLabel: 'Demo file invalid!',});
+                this.setState({ errorLabel: 'Demo file invalid!', });
                 return;
             }
         } else if (this.props.text !== '') { //Text exists inside TextBox
             if (!this.isValidInteger(this.props.text)) {
-                this.setState({errorLabel: 'Please enter a valid match id!'});
+                this.setState({ errorLabel: 'Please enter a valid match id!' });
                 return;
             }
         } else { //Neither
-            this.setState({errorLabel: 'Please enter a match id or upload a file!'});
+            this.setState({ errorLabel: 'Please enter a match id or upload a file!' });
             return;
         }
         this.setState({
@@ -74,20 +74,20 @@ export default class Upload extends Component {
         this.callServer().then(this.onP)
     }
 
-    isValidInteger(id){
+    isValidInteger(id) {
         return !isNaN(id);
     }
 
     isValidDem(file) {
         //File extension validation
         let splitName = file.name.split(".");
-        if( splitName.length === 1 || ( splitName[0] === "" && splitName.length === 2 ) ) {
+        if (splitName.length === 1 || (splitName[0] === "" && splitName.length === 2)) {
             return false;
         } else if (splitName.pop() === 'dem') {
             return true;
         }
     }
-    
+
     getSubmitButtonText() {
         console.log('get button text is called');
         return 'Watch ' + (this.props.selectedFile !== '' ? this.props.selectedFile.name : this.props.text);
@@ -101,31 +101,49 @@ export default class Upload extends Component {
 
         return (
             <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
-            <div>
                 <div>
-                    <label> {this.state.errorLabel}</label>
+                    <div>
+                        <label> {this.state.errorLabel}</label>
+                    </div>
+                    <div>
+                        <div className="Rows">
+                            <div>
+                                <TextBox
+                                    className="IdSelect"
+                                    updateText={this.updateText}
+                                />
+                            </div>
+                            <div>
+                                <UploadButton
+                                    className={"FileSelect"}
+                                    updateFile={this.updateFile}
+                                />
+                                <StandardButton
+                                    className={"ClearButton"}
+                                    function={this.updateFile}
+                                    funcParam={''}
+                                    buttonText={'Cancel selected'}
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        {!this.state.loading ?
+                            <StandardButton
+                                function={this.onPress}
+                                buttonText={this.getSubmitButtonText}
+                                className="SubmitReplay"
+                            /> :
+                            <Loader
+                                type="TailSpin"
+                                color="#00BFFF"
+                                height={100}
+                                width={100}
+                                timeout={0} //3 secs
+                            />}
+                    </div>
                 </div>
-                <div>
-                    <TextBox className="IdSelect" updateText={this.updateText} /> 
-                    <UploadButton className={"FileSelect"} updateFile={this.updateFile}/>
-                    <StandardButton className={"ClearButton"} function={this.updateFile} funcParam={''} buttonText={'delete currently selected file! x'} />      
-                </div>
-                <div>
-                    {!this.state.loading ?
-                    <StandardButton
-                        function={this.onPress}
-                        buttonText={this.getSubmitButtonText}
-                        className="SubmitReplay"
-                    /> :
-                    <Loader
-                        type="TailSpin"
-                        color="#00BFFF"
-                        height={100}
-                        width={100}
-                        timeout={0} //3 secs
-                    />}
-                </div>
-            </div>
             </Dropzone>
         );
     }
