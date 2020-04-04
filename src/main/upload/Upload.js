@@ -17,7 +17,7 @@ export default class Upload extends Component {
             selector: false,
             loading: false,
             errorLabel: '',
-
+        
         };
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
@@ -29,6 +29,19 @@ export default class Upload extends Component {
     }
 
     componentDidMount() {
+        let pathname = window.location.pathname;
+        pathname = pathname.replace('/', ''); //Filter slashes from url
+        if (pathname !== '') {
+            this.updateText(pathname);
+
+            this.onPress(pathname);
+        }
+        
+    }
+
+    componentWillReceiveProps(props) {
+        console.log('props updated------------');
+        //this.props = props;
 
     }
 
@@ -48,13 +61,19 @@ export default class Upload extends Component {
         this.props.onPress(event)
     }
 
-    /*TODO: george
+    /*
         Match id validation
             - Check if it's a valid integer, let download service throw other errors?
             - There's more to it, but thats backend.
     */
-    onPress() {
-        if (this.props.selectedFile !== '') { //Selected file exists 
+    onPress(url) {
+        if (url != null) { //Existence of url should override file
+            if (!this.isValidInteger(url)) {
+                this.setState({ errorLabel: 'Invalid match id!' });
+                return;
+            }
+        }
+        else if (this.props.selectedFile !== '') { //Selected file exists 
             if (!this.isValidDem(this.props.selectedFile)) {
                 this.setState({ errorLabel: 'Demo file invalid!', });
                 return;
@@ -64,6 +83,7 @@ export default class Upload extends Component {
                 this.setState({ errorLabel: 'Please enter a valid match id!' });
                 return;
             }
+            
         } else { //Neither
             this.setState({ errorLabel: 'Please enter a match id or upload a file!' });
             return;
@@ -94,7 +114,7 @@ export default class Upload extends Component {
     }
 
     //TODO: george
-    //An 'x' button next to the upload button to clear the currently selected file
+    //show the 'x' button only when a file is selected.
     render() {
         //Old submit button: 
         //<SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile}/>

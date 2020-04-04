@@ -23,15 +23,21 @@ export default class Main extends Component {
         event.stopPropagation();
     }
 
+    
     onPress = (file) => {
         this.updateText(file);
         this.setState({ switchstate: true });
+        //set url to match id.
+        window.history.replaceState(null, "Web Replays", "/" + this.state.text);
     }
+
 
     onPressReplay = () => {
         this.updateText('');
         this.updateFile('');
         this.setState({ switchstate: false });
+        //clear the match id in the url, because it will keep trying to load it
+        window.history.replaceState(null, "Web Replays", "/");
     }
     
     updateText = (matchid) => this.setState({ text: matchid });
