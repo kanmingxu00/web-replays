@@ -22,7 +22,7 @@ export default class Main extends Component {
                     className={this.props.className} 
                     value={this.state.value} 
                     onChange={this.handleChange}
-                    placeholder="Match ID"
+                    placeholder="Enter Match ID"
                 />
             </div>
         )
