@@ -10,6 +10,7 @@ export default class Main extends Component {
         };
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.updateFile = this.props.updateFile.bind(this);
+        this.dropRef = React.createRef()
         console.log('styleBorder: ' + this.props.styleBorder);
         console.log('styleCenter: ' + this.props.styleCenter);
     }
@@ -22,8 +23,6 @@ export default class Main extends Component {
             this.updateFile(e[0]);
         }
     }
-
-    dropRef = React.createRef()
 
     handleDrag = (event) => {
         event.preventDefault();

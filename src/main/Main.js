@@ -15,32 +15,12 @@ export default class Main extends Component {
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
         this.updateFile = this.updateFile.bind(this);
-
         //this.ref = React.createRef();
-        
-    }
-
-    componentDidMount() {
-        //this.ref.current.addEventListener('dragenter', this.handleDragIn);
     }
 
     handleDragIn(event) {
         event.preventDefault();
         event.stopPropagation();
-    }
-
-
-    renderInner() {
-        return (
-            <div>
-                <div>
-                    {this.state.switchstate ?
-                    <Replay onPress={this.onPressReplay} text={this.state.text} /> : 
-                    <Upload onPress={this.onPress} text={this.state.text} selectedFile={this.state.selectedFile} updateText={this.updateText} updateFile={this.updateFile}/> }
-                </div> 
-            </div>
-
-        )
     }
 
     onPress = (file) => {
@@ -60,6 +40,18 @@ export default class Main extends Component {
         this.setState({
             selectedFile: file,
         });
+    }
+
+    renderInner() {
+        return (
+            <div>
+                <div>
+                    {this.state.switchstate ?
+                    <Replay onPress={this.onPressReplay} text={this.state.text} /> : 
+                    <Upload onPress={this.onPress} text={this.state.text} selectedFile={this.state.selectedFile} updateText={this.updateText} updateFile={this.updateFile}/> }
+                </div> 
+            </div>
+        )
     }
 
     render() {

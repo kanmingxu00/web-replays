@@ -16,7 +16,7 @@ export default class Main extends Component {
 
     render() {
         return(
-            <label>
+            <div>
                 <input
                     type="text" 
                     className={this.props.className} 
@@ -24,12 +24,7 @@ export default class Main extends Component {
                     onChange={this.handleChange}
                     placeholder="Match ID"
                 />
-                
-            </label>
-          
+            </div>
         )
-
     }
-
-
 }

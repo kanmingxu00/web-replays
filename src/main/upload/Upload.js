@@ -49,10 +49,9 @@ export default class Upload extends Component {
     }
 
     /*TODO: george
-        File type validation
-            - Check file extension and file header?
         Match id validation
             - Check if it's a valid integer, let download service throw other errors?
+            - There's more to it, but thats backend.
     */
     onPress() {
         if (this.props.selectedFile !== '') { //Selected file exists 
@@ -60,7 +59,6 @@ export default class Upload extends Component {
                 this.setState({errorLabel: 'Demo file invalid!',});
                 return;
             }
-
         } else if (this.props.text !== '') { //Text exists inside TextBox
             if (!this.isValidInteger(this.props.text)) {
                 this.setState({errorLabel: 'Please enter a valid match id!'});
@@ -70,7 +68,6 @@ export default class Upload extends Component {
             this.setState({errorLabel: 'Please enter a match id or upload a file!'});
             return;
         }
-
         this.setState({
             loading: true,
         })
@@ -109,19 +106,17 @@ export default class Upload extends Component {
                     <label> {this.state.errorLabel}</label>
                 </div>
                 <div>
-                    <TextBox className="IdSelect" updateText={this.updateText} />
-                     
-                        
+                    <TextBox className="IdSelect" updateText={this.updateText} /> 
                     <UploadButton className={"FileSelect"} updateFile={this.updateFile}/>
-                    <StandardButton className={"ClearButton"} function={this.updateFile} funcParam={''} buttonText={'delete currently selected file! x'} />
-                        
-                    
+                    <StandardButton className={"ClearButton"} function={this.updateFile} funcParam={''} buttonText={'delete currently selected file! x'} />      
                 </div>
                 <div>
-
                     {!this.state.loading ?
-                    <StandardButton function={this.onPress} buttonText={this.getSubmitButtonText} className="SubmitReplay"/>
-                    :
+                    <StandardButton
+                        function={this.onPress}
+                        buttonText={this.getSubmitButtonText}
+                        className="SubmitReplay"
+                    /> :
                     <Loader
                         type="TailSpin"
                         color="#00BFFF"
