@@ -5,13 +5,14 @@ import Main from './main/Main.js';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Watch Dota in your browser
-        </p>
-        <Main />
-      </header>
-    </div>
+		<div className="BackgroundImage"/>
+		  <header className="App-header">
+			<p>
+			  Watch Dota in your browser
+			</p>
+			<Main />
+		  </header>
+		</div>
   );
 }
 
