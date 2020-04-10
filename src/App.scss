@@ -30,7 +30,6 @@
 
 .BackgroundImage {
   background-image: url('./assets/background_image.jpg');
-  -webkit-mask-image: -webkit-radial-gradient(ellipse, rgba(0,0,0,.7), rgba(0,0,0,1));
   background-size: cover;
   background-blend-mode: lighten;
   min-width: 100vw;
@@ -43,6 +42,23 @@
   left: 0;
   z-index: -1;
   }
+
+.AcceptBox {
+  font-family: epic;
+  font-size: 72px;
+  color: white;
+  background-color: rgb(46, 47, 47);
+  font-weight: bold;
+  border: 2px solid rgb(56, 93, 76);
+  border-radius: 4px;
+  padding: 5px;
+
+}
+
+@font-face {
+  font-family: epic;
+  src: url('./assets/radiance.ttf');
+}
 
 @keyframes App-logo-spin {
   from {
