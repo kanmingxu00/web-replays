@@ -1,8 +1,7 @@
 var { ParseClient } = require('../../protos/parse_grpc_web_pb.js')
 var { MatchRequest, MatchResponse } = require('../../protos/parse_pb.js');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-params = {
+const params = {
     address: "localhost:8080",
     defaultName: "world"
 }
@@ -19,7 +18,7 @@ const run = (/* */) => {
     }
 }
 
-var func = async function(matchID) {
+export var func = async function(matchID) {
     
 
     const parseClient = new ParseClient(params.address);
