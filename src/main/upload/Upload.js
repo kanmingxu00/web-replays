@@ -29,18 +29,20 @@ export default class Upload extends Component {
     }
 
     componentDidMount() {
-        let pathname = window.location.pathname;
-        pathname = pathname.replace('/', ''); //Filter slashes from url
+        //let pathname = window.location.pathname;
+        let pathname = window.location.hash;
+        //pathname = pathname.replace('/', ''); //Filter slashes from url
+        pathname = pathname.replace('#', ''); //Filter the # from hash
+    
         if (pathname !== '') {
             this.updateText(pathname);
-
             this.onPress(pathname);
         }
         
     }
 
     componentWillReceiveProps(props) {
-        console.log('props updated------------');
+        //console.log('props updated------------');
         //this.props = props;
 
     }

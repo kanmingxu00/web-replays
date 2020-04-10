@@ -29,7 +29,8 @@ export default class Main extends Component {
         this.updateText(file);
         this.setState({ switchstate: true });
         //set url to match id.
-        window.history.replaceState(null, "Web Replays", "/" + this.state.text);
+        //window.history.replaceState(null, "Web Replays", "/" + this.state.text);
+        window.location.hash = this.state.text;
     }
 
 
@@ -38,7 +39,8 @@ export default class Main extends Component {
         this.updateFile('');
         this.setState({ switchstate: false });
         //clear the match id in the url, because it will keep trying to load it
-        window.history.replaceState(null, "Web Replays", "/");
+        //window.history.replaceState(null, "Web Replays", "/");
+        window.location.hash = '';
     }
     
     updateText = (matchid) => this.setState({ text: matchid });
