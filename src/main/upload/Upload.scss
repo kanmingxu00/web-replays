@@ -13,6 +13,8 @@ input:focus::-webkit-input-placeholder{
 .Rows {
 	display: flex;
 	flex-direction: row;
+	margin: auto;
+	width: 50%;
 }
 
 .FileSelect {
@@ -47,21 +49,23 @@ input[type="file"]+ label:hover {
 .IdSelect {
 	display: inline-block;
 	placeholder-color: azure;
-	background-color: #0099ff;
-	border-color: #0099ff;
-	border: none;
+	background-color: rgba(50,50,50,0.8);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 5px black;
+
 	color: azure;
 	padding: 10px 20px;
 	text-align: center;
 	font-size: 16px;
-	border-radius: 8px;
-	margin-left: 2em;
+
 }
 
 
 /* SubmitReplay */
 .SubmitReplay {
-	background-color: #0099ff;
+	background-color: rgb(56, 93, 76);
 	border: none;
 	color: azure;
 	padding: 10px 20px;
@@ -74,8 +78,8 @@ input[type="file"]+ label:hover {
 
 .SubmitReplay:hover {
 	background-color: azure;
-	border-color: #0099ff;
-	color: #0099ff;
+	border-color: rgb(56, 93, 76);
+	color: rgb(56, 93, 76);
 }
 
 .ClearButton {
@@ -96,3 +100,33 @@ input[type="file"]+ label:hover {
 	color: #0099ff;
 
 }
+
+.ThinText {
+	color: gray;
+	font-size: 24px;
+	font-weight: lighter;
+	text-transform: uppercase;
+
+}
+
+.DarkerBackground {
+	background-color: rgb(23, 25, 24);
+
+}
+
+.BoldText {
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.AcceptBox {
+	font-size: 72px;
+	color: white;
+	background-color: rgb(46, 47, 47);
+	border: 2px solid rgb(56, 93, 76);
+	border-radius: 4px;
+	padding: 5px;
+  
+  }
+

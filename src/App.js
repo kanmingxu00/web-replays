@@ -7,9 +7,6 @@ function App() {
     <div className="App">
 		<div className="BackgroundImage"/>
 		  <header className="App-header">
-			<p>
-			  Watch Dota in your browser
-			</p>
 			<Main />
 		  </header>
 		</div>

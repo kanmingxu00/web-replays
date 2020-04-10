@@ -120,7 +120,12 @@ export default class Upload extends Component {
         //<SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile}/>
 
         return (
-            <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
+            // <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
+            <div className="AcceptBox"> 
+                    <div className="DarkerBackground ThinText">Watch Dota Replays in your Browser </div>
+                    <div className="DarkerBackground BoldText">
+                        Dota 2 Observer 
+                    </div>
                 <div>
                     <div>
                         <label> {this.state.errorLabel}</label>
@@ -133,18 +138,20 @@ export default class Upload extends Component {
                                     updateText={this.updateText}
                                 />
                             </div>
-                            <div>
+                            
+                            {/* <div>
+                                
                                 <UploadButton
                                     className={"FileSelect"}
                                     updateFile={this.updateFile}
-                                />
-                                <StandardButton
+                                /> */}
+                                {/* <StandardButton
                                     className={"ClearButton"}
                                     function={this.updateFile}
                                     funcParam={''}
                                     buttonText={'Cancel selected'}
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                     </div>
@@ -164,7 +171,8 @@ export default class Upload extends Component {
                             />}
                     </div>
                 </div>
-            </Dropzone>
+            </div>
+            // </Dropzone>
         );
     }
 }
