@@ -59,6 +59,16 @@ input[type="file"]+ label:hover {
 	padding: 10px 20px;
 	text-align: center;
 	font-size: 16px;
+	margin: auto;
+	width: 50%
+	
+
+}
+
+.IdSelectDiv {
+	margin: auto;
+	width: 50%
+
 
 }
 
@@ -72,7 +82,7 @@ input[type="file"]+ label:hover {
 	cursor: pointer;
 	text-align: center;
 	font-size: 16px;
-	border-radius: 8px;
+	border-radius: 4px;
 	transition-duration: .2s;
 }
 
@@ -127,6 +137,7 @@ input[type="file"]+ label:hover {
 	border: 2px solid rgb(56, 93, 76);
 	border-radius: 4px;
 	padding: 5px;
+	min-width: 13em;
   
   }
 

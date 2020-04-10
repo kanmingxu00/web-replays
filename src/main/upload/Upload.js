@@ -132,7 +132,7 @@ export default class Upload extends Component {
                     </div>
                     <div>
                         <div className="Rows">
-                            <div>
+                            <div className="IdSelectDiv">
                                 <TextBox
                                     className="IdSelect"
                                     updateText={this.updateText}
