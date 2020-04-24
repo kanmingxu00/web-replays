@@ -1,9 +1,8 @@
 var { ParseClient } = require('../../protos/parse_grpc_web_pb.js')
-var { MatchRequest, MatchResponse } = require('../../protos/parse_pb.js');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var { MatchRequest, ParsedResponse } = require('../../protos/parse_pb.js');
 
-params = {
-    address: "localhost:8080",
+const params = {
+    address: "http://localhost:8080",
     defaultName: "world"
 }
 
@@ -17,12 +16,12 @@ const run = (/* */) => {
     while(true) {
         // keep reading
     }
-}
+};
 
-var func = async function(matchID) {
+export async function SendTest(matchID) {
     
 
-    const parseClient = new ParseClient(params.address);
+    const parseClient = new ParseClient(params.address, {}, {});
     const request = new MatchRequest();
     const d = new Date();
     const clientID = d.getTime();
@@ -31,10 +30,19 @@ var func = async function(matchID) {
 
     console.log("watashi")
 
+
+
     // i had to dig through code for this: (trust me on it)
     // https://github.com/grpc/grpc-web/blob/master/javascript/net/grpc/web/grpcwebclientreadablestream.js
-    const gay = parseClient.createStream(request, {}); // returns a grpcwebclientreadablestream
-    console.log(gay)
+    const hard = parseClient.createStream(request, {}); // returns a grpcwebclientreadablestream
+
+    hard.on('data', function(parsedReponse) {
+        console.log(parsedReponse);
+        if (parsedReponse.ready)
+            console.log("ready buf received")
+    });
+
+
 
     // const stream = 
 
@@ -49,7 +57,6 @@ var func = async function(matchID) {
 
 }
 
-func()
 
 
 
