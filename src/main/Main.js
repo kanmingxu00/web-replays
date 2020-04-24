@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import './Main.css';
 import Upload from './upload/Upload.js'
 import Replay from './replay/Replay.js'
+import { func } from './server/GrpcClient.js'
 
 export default class Main extends Component {
     constructor(props) {
@@ -64,6 +65,7 @@ export default class Main extends Component {
         return (
             <div> 
                 { this.renderInner() }
+                <button onClick={func}> test </button>
             </div>  
         )
     }

@@ -57,6 +57,7 @@ export async function SendTest(matchID) {
 
 }
 
+func()
 
 
 
