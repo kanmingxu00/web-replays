@@ -6,14 +6,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "google-protobuf": "^3.11.4",
-    "grpc-web": "^1.0.7",
+    "google-protobuf": "latest",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loader-spinner": "^3.1.5",
     "react-scripts": "3.4.1",
-    "xmlhttprequest": "^1.8.0"
+    "update": "^0.7.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,7 +21,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": "**/*.js",
+        "excludedFiles": "**/*_pb.js"
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -37,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "grpc-web": "^1.0.7",
     "url-loader": "^4.0.0"
   }
 }

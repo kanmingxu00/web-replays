@@ -28,20 +28,35 @@ export async function SendTest(matchID) {
     request.setClientid(clientID);
     request.setMatchid(matchID);
 
-    console.log("watashi")
+    console.log("Sending request: ");
+    console.log(request)
 
 
 
     // i had to dig through code for this: (trust me on it)
     // https://github.com/grpc/grpc-web/blob/master/javascript/net/grpc/web/grpcwebclientreadablestream.js
     const hard = parseClient.createStream(request, {}); // returns a grpcwebclientreadablestream
-
-    hard.on('data', function(parsedReponse) {
-        console.log(parsedReponse);
-        if (parsedReponse.ready)
-            console.log("ready buf received")
+    const readyPromise = new Promise(function (resolve, reject) {
+        hard.on('data', function (parsedReponse) {
+            console.log(parsedReponse);
+            if (parsedReponse.getReady()) {
+                console.log("ready buf received");
+                resolve();
+            }
+        });
     });
 
+    await readyPromise.then(function () {
+        parseClient.parse(request, {}, function (err, response) {
+            if (err != null) {
+                console.log("uh oh! error in parse method");
+                console.log(err)
+            } else {
+                console.log(err);
+                console.log(response)
+            }
+        })
+    })
 
 
     // const stream = 
@@ -56,8 +71,6 @@ export async function SendTest(matchID) {
     // run(/* Stream */)
 
 }
-
-func()
 
 
 
