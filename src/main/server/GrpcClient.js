@@ -139,6 +139,9 @@ export async function SendTest(matchID) {
 
 }
 
+export default function GetDataArray(){
+    return beegarray;
+}
 
 
 

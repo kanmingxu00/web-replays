@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BackButton from './BackButton.js';
 import './Replay.scss';
 import StandardButton from '../StandardButton.js';
+import RenderScreen from "./RenderScreen";
 
 
 export default class Replay extends Component {
@@ -16,7 +17,7 @@ export default class Replay extends Component {
         //old button: <BackButton onPress={this.onPress} buttonText={'Back'}/>
         return (
             <div>
-                <br/>
+                <RenderScreen/>
                 <StandardButton className="BackButton" function={this.onPress} buttonText={'Back'} />
                 Replay id: {this.text}
             </div>
