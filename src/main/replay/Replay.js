@@ -16,7 +16,6 @@ export default class Replay extends Component {
         //old button: <BackButton onPress={this.onPress} buttonText={'Back'}/>
         return (
             <div>
-                <canvas id="myCanvas" width="480" height="320"></canvas>
                 <br/>
                 <StandardButton className="BackButton" function={this.onPress} buttonText={'Back'} />
                 Replay id: {this.text}
