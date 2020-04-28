@@ -85,7 +85,7 @@ export async function SendTest(matchID) {
                 beegarray[parsedReponse.getTick()] = [];
             }
             if (parsedReponse.getHero()) {
-                beegarray[parsedReponse.getTick()].push(parsedReponse.getHero().array); //this is shit retard
+                beegarray[parsedReponse.getTick()].push(parsedReponse.getHero()); //this is shit retard
             }
             if (count % 1000 === 0 && amt < 10) {
                 console.log(typeof parsedReponse);
