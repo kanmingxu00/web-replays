@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import BackButton from './BackButton.js';
 import './Replay.scss';
 import StandardButton from '../StandardButton.js';
-import RenderScreen from "./RenderScreen";
 import * as THREE from 'three';
 
 
@@ -18,7 +16,7 @@ export default class Replay extends Component {
         let scene = new THREE.Scene();
         let aspectRatio = window.innerWidth / window.innerHeight;
         let nearPlane = 0.1;
-        let farPlane = 16;
+        let farPlane = 160;
         let fov = 75;
 
         let camera = new THREE.PerspectiveCamera(fov, aspectRatio, nearPlane, farPlane);
@@ -52,19 +50,24 @@ export default class Replay extends Component {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
 
-            edgePanLeft = (mouse.x <= 0 + EDGE_PAN_PADDING);
-            edgePanRight = (mouse.x >= window.innerWidth - EDGE_PAN_PADDING);
-            edgePanUp = (mouse.y <= 0 + EDGE_PAN_PADDING);
-            edgePanDown = (mouse.y >= window.innerHeight - EDGE_PAN_PADDING);
+            edgePanLeft = (mouse.x <= 0 + EDGE_PAN_PADDING) && (mouse.x >= 0);
+            edgePanRight = (mouse.x >= window.innerWidth - EDGE_PAN_PADDING) && (mouse.x <=window.innerWidth);
+            edgePanUp = (mouse.y <= 0 + EDGE_PAN_PADDING) && (mouse.y >= 0);
+            edgePanDown = (mouse.y >= window.innerHeight - EDGE_PAN_PADDING) && (mouse.y <= window.innerHeight);
 
         }
 
-        let geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5, 1, 1, 1);
+        let geometry = new THREE.BoxGeometry(15, 15, 15, 1, 1, 1);
         let material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
         let cube = new THREE.Mesh(geometry, material);
+        cube.position.z = -5;
         scene.add(cube);
         camera.position.z = 3;
+        camera.rotation.x = 20 * Math.PI / 180;
+
         function render() {
+            //camera.rotation.x = 0 * Math.PI / 180;
+
             requestAnimationFrame(render);
             //cube.rotation.x += 0.01;
             //cube.rotation.y += 0.01;
@@ -81,8 +84,6 @@ export default class Replay extends Component {
             if (edgePanDown) {
                 camera.position.y -= EDGE_PAN_INCREMENT;
             }
-
-
 
 
 

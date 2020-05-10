@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './Upload.scss';
 import TextBox from './TextBox.js';
-import SubmitButton from './SubmitButton.js';
-import Dropzone from './Dropzone.js';
-import UploadButton from './UploadButton.js';
 import StandardButton from '../StandardButton.js';
 
 import Loader from 'react-loader-spinner'
