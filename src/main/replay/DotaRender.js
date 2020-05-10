@@ -31,7 +31,14 @@ export default class DotaRender extends Component {
         let edgePanRight = false;
 
         const EDGE_PAN_INCREMENT = 0.05;
-        const EDGE_PAN_PADDING = 30;
+        const EDGE_PAN_PADDING = 50;
+
+        function onMouseLeave(event) {
+            edgePanLeft = false;
+            edgePanRight = false;
+            edgePanDown = false;
+            edgePanUp = false;
+        }
 
         function onMouseMove(event) {
             prevMouse.x = mouse.x;
@@ -45,10 +52,12 @@ export default class DotaRender extends Component {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
 
-            edgePanLeft = (mouse.x <= 0 + EDGE_PAN_PADDING) && (mouse.x >= 0);
-            edgePanRight = (mouse.x >= window.innerWidth - EDGE_PAN_PADDING) && (mouse.x <= window.innerWidth);
-            edgePanUp = (mouse.y <= 0 + EDGE_PAN_PADDING) && (mouse.y >= 0);
-            edgePanDown = (mouse.y >= window.innerHeight - EDGE_PAN_PADDING) && (mouse.y <= window.innerHeight);
+
+            //console.log("x: " + mouse.x + " y: " + mouse.y);
+            edgePanLeft = (mouse.x <= 1 + EDGE_PAN_PADDING);
+            edgePanRight = (mouse.x >= window.innerWidth - EDGE_PAN_PADDING);
+            edgePanUp = (mouse.y <= 1 + EDGE_PAN_PADDING);
+            edgePanDown = (mouse.y >= window.innerHeight - EDGE_PAN_PADDING);
 
         }
 
@@ -89,7 +98,7 @@ export default class DotaRender extends Component {
 
 
         window.addEventListener('mousemove', onMouseMove, false);
-
+        window.addEventListener('mouseout', onMouseLeave, false);
 
     }
 

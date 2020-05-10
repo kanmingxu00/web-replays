@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Replay.scss';
 import StandardButton from '../StandardButton.js';
-import Minimap from './Minimap';
+import MinimapContainer from './MinimapContainer';
 import DotaRender from './DotaRender';
 
 
@@ -26,7 +26,7 @@ export default class Replay extends Component {
                 </div>
                 <DotaRender />
                 <div className="MiniMapContainer">
-                    <Minimap length={this.windowHeight/3} />
+                    <MinimapContainer length={this.windowHeight/3} />
                 </div>
             </div>
         )
