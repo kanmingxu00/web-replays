@@ -12,7 +12,7 @@ export default class Main extends Component {
             text: '',
             selectedFile: '',
             replayFile: '',
-            windowHeight: 0,
+            windowHeight: window.innerHeight,
         }
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
@@ -23,9 +23,6 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            windowHeight: document.querySelector('#height'),
-        });
         window.addEventListener('resize', this.reportWindowSize);
     }
 
@@ -46,7 +43,7 @@ export default class Main extends Component {
                         windowHeight: window.innerHeight,
                     });
                 }
-            }, 500);
+            }, 400);
         }
     }
 
@@ -83,6 +80,7 @@ export default class Main extends Component {
     }
 
     renderInner() {
+        console.log(this.state.windowHeight);
         return (
             <div>
                 <div>
