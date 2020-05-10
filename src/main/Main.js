@@ -26,18 +26,26 @@ export default class Main extends Component {
         this.setState({
             windowHeight: document.querySelector('#height'),
         });
-        window.onresize = this.reportWindowSize
+        window.addEventListener('resize', this.reportWindowSize);
     }
 
-    reportWindowSize() {
-        if (this.state.switchState) {
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.reportWindowSize)
+    }
+
+    reportWindowSize = () => {
+        console.log("what the fuck");
+        if (this.state.switchstate) {
             if (this.timeoutHandle) {
                 window.clearTimeout(this.timeoutHandle);
             }
             this.timeoutHandle = window.setTimeout(() => {
-                this.setState({
-                    windowHeight: document.querySelector('#height'),
-                })
+                if (window.innerHeight != this.state.windowHeight) {
+                    console.log("this is epic height");
+                    this.setState({
+                        windowHeight: window.innerHeight,
+                    });
+                }
             }, 500);
         }
     }
