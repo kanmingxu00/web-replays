@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GetDataArray from '../server/GrpcClient'
 
 
-export default class Canvas extends Component{
+export default class Canvas extends Component {
 
     constructor(props) {
         super(props);

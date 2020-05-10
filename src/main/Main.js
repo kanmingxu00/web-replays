@@ -12,7 +12,7 @@ export default class Main extends Component {
             text: '',
             selectedFile: '',
             replayFile: '',
-            windowHeight: 
+            windowHeight: 0,
         }
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
@@ -30,7 +30,7 @@ export default class Main extends Component {
     }
 
     reportWindowSize() {
-        if (switchState) {
+        if (this.state.switchState) {
             if (this.timeoutHandle) {
                 window.clearTimeout(this.timeoutHandle);
             }
