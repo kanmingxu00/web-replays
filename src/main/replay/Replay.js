@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Replay.scss';
 import StandardButton from '../StandardButton.js';
 import * as THREE from 'three';
+import Minimap from './Minimap';
 
 
 export default class Replay extends Component {
@@ -9,7 +10,7 @@ export default class Replay extends Component {
         super(props);
         this.text = this.props.text;
         this.onPress = this.props.onPress;
-
+        this.windowHeight = this.props.windowHeight;
     }
 
     componentDidMount() {
@@ -108,6 +109,9 @@ export default class Replay extends Component {
                     Replay id: {this.text}
                 </div>
                 <div ref = {ref => (this.mount = ref)}></div>
+                <div className="MiniMapContainer">
+                    <Minimap length={this.windowHeight/3} />
+                </div>
             </div>
         )
     }
