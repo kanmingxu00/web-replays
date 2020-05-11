@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import './Main.css';
 import Upload from './upload/Upload.js'
 import Replay from './replay/Replay.js'
-import { SendTest } from './server/GrpcClient'
 
 export default class Main extends Component {
     constructor(props) {
@@ -112,9 +111,6 @@ export default class Main extends Component {
         return (
             <div>
                 {this.renderInner()}
-                <div>
-                    <button onClick={SendTest}>test</button>
-                </div>
             </div>
         )
     }
