@@ -13,6 +13,7 @@ export default class Main extends Component {
             selectedFile: '',
             replayFile: '',
             windowHeight: window.innerHeight,
+            windowWidth: window.innerWidth,
         }
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
@@ -31,16 +32,20 @@ export default class Main extends Component {
     }
 
     reportWindowSize = () => {
-        console.log("what the fuck");
         if (this.state.switchstate) {
             if (this.timeoutHandle) {
                 window.clearTimeout(this.timeoutHandle);
             }
             this.timeoutHandle = window.setTimeout(() => {
-                if (window.innerHeight != this.state.windowHeight) {
+                if (window.innerHeight !== this.state.windowHeight) {
                     console.log("this is epic height");
                     this.setState({
                         windowHeight: window.innerHeight,
+                    });
+                }
+                if (window.innerWidth !== this.state.windowWidth) {
+                    this.setState({
+                        windowWidth: window.innerWidth,
                     });
                 }
             }, 400);
@@ -88,6 +93,7 @@ export default class Main extends Component {
                         <Replay
                             onPress={this.onPressReplay}
                             text={this.state.text}
+                            windowWidth={this.state.windowWidth}
                             windowHeight={this.state.windowHeight}
                         /> :
                         <Upload

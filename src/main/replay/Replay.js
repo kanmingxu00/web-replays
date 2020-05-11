@@ -10,12 +10,15 @@ export default class Replay extends Component {
         super(props);
         this.text = this.props.text;
         this.onPress = this.props.onPress;
+        this.windowWidth = this.props.windowWidth;
         this.windowHeight = this.props.windowHeight;
-        console.log("this is replay: " + this.props.windowHeight);
+        
     }
 
     componentWillReceiveProps(nextProps) {
+        this.windowWidth = nextProps.windowWidth;
         this.windowHeight = nextProps.windowHeight;
+        
     }
 
 
@@ -29,7 +32,7 @@ export default class Replay extends Component {
                     Replay id: {this.text}
                 </div>
                 <div className="DotaRenderContainer">
-                    <DotaRender />
+                    <DotaRender windowWidth={this.windowWidth} windowHeight={this.windowHeight}/>
                 </div>
                 
                 <div className="MiniMapContainer">
