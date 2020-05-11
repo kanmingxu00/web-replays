@@ -44,14 +44,18 @@ export default class DotaRender extends Component {
         const EDGE_PAN_INCREMENT = 0.05;
         const EDGE_PAN_PADDING = 50;
 
-        function onMouseLeave(event) {
+        //function onMouseLeave(event) {
+        const onMouseLeave = (event) => {
             edgePanLeft = false;
             edgePanRight = false;
             edgePanDown = false;
             edgePanUp = false;
         }
+        this.onMouseLeave = onMouseLeave.bind(this);
 
-        function onMouseMove(event) {
+
+        //function onMouseMove(event) {
+        const onMouseMove = (event) => {
             prevMouse.x = mouse.x;
             prevMouse.y = mouse.y;
 
@@ -71,6 +75,8 @@ export default class DotaRender extends Component {
             edgePanDown = (mouse.y >= this.windowHeight - EDGE_PAN_PADDING);
 
         }
+        this.onMouseMove = onMouseMove.bind(this);
+
 
         let geometry = new THREE.BoxGeometry(15, 15, 15, 1, 1, 1);
         let material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
@@ -119,8 +125,7 @@ export default class DotaRender extends Component {
             renderer.render(scene, camera);
         };
         //???
-        this.render3D = render3D;
-        this.render3D = this.render3D.bind(this);
+        this.render3D = render3D.bind(this);
 
         this.render3D();
 
