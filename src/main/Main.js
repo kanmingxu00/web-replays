@@ -13,6 +13,7 @@ export default class Main extends Component {
             replayFile: '',
             windowHeight: window.innerHeight,
             windowWidth: window.innerWidth,
+            gameData: [],
         }
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
@@ -57,9 +58,12 @@ export default class Main extends Component {
     }
 
 
-    onPress = (file) => {
-        this.updateText(file);
-        this.setState({ switchstate: true });
+    onPress = (gameData) => {
+        // this.updateText(file);
+        this.setState({
+            switchstate: true,
+            gameData: gameData,
+        });
         //set url to match id.
         //window.history.replaceState(null, "Web Replays", "/" + this.state.text);
         window.location.hash = this.state.text;
@@ -94,6 +98,7 @@ export default class Main extends Component {
                             text={this.state.text}
                             windowWidth={this.state.windowWidth}
                             windowHeight={this.state.windowHeight}
+                            gameData={this.state.gameData}
                         /> :
                         <Upload
                             onPress={this.onPress}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Main extends Component {
+export default class StandardButton extends Component {
 
 
     //Prop inputs: function, funcParam, buttonText, className
