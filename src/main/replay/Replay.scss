@@ -20,3 +20,15 @@
 	color: #0099ff;
 
 }
+
+.MiniMapContainer {
+	position: absolute;
+	bottom: 2px;
+	left: 2px;
+	z-index: 1;
+}
+
+.DotaRenderContainer {
+	z-index: -1;
+
+}

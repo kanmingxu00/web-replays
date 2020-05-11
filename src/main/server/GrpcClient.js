@@ -1,63 +1,64 @@
 var {ParseClient} = require('../../protos/parse_grpc_web_pb.js')
 var {MatchRequest, ParsedResponse} = require('../../protos/parse_pb.js');
 
-const params = {
-    address: "http://localhost:8080",
-    defaultName: "world"
-}
+export async function sendTest(matchID) {
 
-const readyMessage = (/* Stream */) => {
-    while (true) {
-        // returns when you get ready message
+    const params = {
+        address: "http://localhost:8080",
+        defaultName: "world"
     }
-}
-
-const run = (/* */) => {
-    while (true) {
-        // keep reading
-    }
-};
-
-let beegarray = [];
-
-function sizeOf(obj) {
-    let bytes = 0;
-    if (obj !== null && obj !== undefined) {
-        switch (typeof obj) {
-            case 'number':
-                bytes += 8;
-                break;
-            case 'string':
-                bytes += obj.length * 2;
-                break;
-            case 'boolean':
-                bytes += 4;
-                break;
-            case 'object':
-                if (obj.array) {
-                    for (let i = 0; i < obj.array.length; i++) {
-                        bytes += sizeOf(obj.array[i]);
-                        bytes += 8;
-                    }
-                }
-                break;
-            default:
-                console.log("unknown object:");
-                console.log(obj);
+    
+    const readyMessage = (/* Stream */) => {
+        while (true) {
+            // returns when you get ready message
         }
     }
-    return bytes;
-}
+    
+    const run = (/* */) => {
+        while (true) {
+            // keep reading
+        }
+    };
+    
+    
+    function sizeOf(obj) {
+        let bytes = 0;
+        if (obj !== null && obj !== undefined) {
+            switch (typeof obj) {
+                case 'number':
+                    bytes += 8;
+                    break;
+                case 'string':
+                    bytes += obj.length * 2;
+                    break;
+                case 'boolean':
+                    bytes += 4;
+                    break;
+                case 'object':
+                    if (obj.array) {
+                        for (let i = 0; i < obj.array.length; i++) {
+                            bytes += sizeOf(obj.array[i]);
+                            bytes += 8;
+                        }
+                    }
+                    break;
+                default:
+                    console.log("unknown object:");
+                    console.log(obj);
+            }
+        }
+        return bytes;
+    }
+    
+    function formatByteSize(bytes) {
+        if (bytes < 1024) return bytes + " bytes";
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(3) + " KiB";
+        else if (bytes < 1073741824) return (bytes / 1048576).toFixed(3) + " MiB";
+        else return (bytes / 1073741824).toFixed(3) + " GiB";
+    }
+    
 
-function formatByteSize(bytes) {
-    if (bytes < 1024) return bytes + " bytes";
-    else if (bytes < 1048576) return (bytes / 1024).toFixed(3) + " KiB";
-    else if (bytes < 1073741824) return (bytes / 1048576).toFixed(3) + " MiB";
-    else return (bytes / 1073741824).toFixed(3) + " GiB";
-}
-
-
-export async function SendTest(matchID) {
+    let beegarray = [];
 
 
     const parseClient = new ParseClient(params.address, {}, {});
@@ -125,6 +126,8 @@ export async function SendTest(matchID) {
 
     console.log(formatByteSize(bytes));
 
+    return beegarray;
+
 
     // const stream =
 
@@ -139,9 +142,9 @@ export async function SendTest(matchID) {
 
 }
 
-export default function GetDataArray(){
-    return beegarray;
-}
+// export default function GetDataArray(){
+//     return beegarray;
+// }
 
 
 

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './Upload.scss';
 import TextBox from './TextBox.js';
-import SubmitButton from './SubmitButton.js';
-import Dropzone from './Dropzone.js';
-import UploadButton from './UploadButton.js';
 import StandardButton from '../StandardButton.js';
 
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+const {sendTest} = require('../server/GrpcClient.js');
 
 
 export default class Upload extends Component {
@@ -48,10 +46,10 @@ export default class Upload extends Component {
     }
 
     async callServer() {
-        let fakeAPI = new Promise((resolve, reject) => {
-            setTimeout(() => resolve(this.props.text), 1000)
-        })
-        let result = await fakeAPI;
+        // let fakeAPI = new Promise((resolve, reject) => {
+        //     setTimeout(() => resolve(this.props.text), 1000)
+        // })
+        let result = await sendTest(this.props.text);
 
         return Promise.resolve(result)
     }

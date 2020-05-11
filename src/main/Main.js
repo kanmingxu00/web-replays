@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import './Main.css';
 import Upload from './upload/Upload.js'
 import Replay from './replay/Replay.js'
-import { SendTest } from  './server/GrpcClient'
 
 export default class Main extends Component {
     constructor(props) {
@@ -12,11 +11,44 @@ export default class Main extends Component {
             text: '',
             selectedFile: '',
             replayFile: '',
+            windowHeight: window.innerHeight,
+            windowWidth: window.innerWidth,
         }
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
         this.updateFile = this.updateFile.bind(this);
+        this.reportWindowSize = this.reportWindowSize.bind(this);
+        this.timeoutHandle = null;
         //this.ref = React.createRef();
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.reportWindowSize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.reportWindowSize)
+    }
+
+    reportWindowSize = () => {
+        if (this.state.switchstate) {
+            if (this.timeoutHandle) {
+                window.clearTimeout(this.timeoutHandle);
+            }
+            this.timeoutHandle = window.setTimeout(() => {
+                if (window.innerHeight !== this.state.windowHeight) {
+                    console.log("this is epic height");
+                    this.setState({
+                        windowHeight: window.innerHeight,
+                    });
+                }
+                if (window.innerWidth !== this.state.windowWidth) {
+                    this.setState({
+                        windowWidth: window.innerWidth,
+                    });
+                }
+            }, 400);
+        }
     }
 
     handleDragIn(event) {
@@ -24,7 +56,7 @@ export default class Main extends Component {
         event.stopPropagation();
     }
 
-    
+
     onPress = (file) => {
         this.updateText(file);
         this.setState({ switchstate: true });
@@ -42,7 +74,7 @@ export default class Main extends Component {
         //window.history.replaceState(null, "Web Replays", "/");
         window.location.hash = '';
     }
-    
+
     updateText = (matchid) => this.setState({ text: matchid });
 
     updateFile(file) {
@@ -52,24 +84,33 @@ export default class Main extends Component {
     }
 
     renderInner() {
+        console.log(this.state.windowHeight);
         return (
             <div>
                 <div>
                     {this.state.switchstate ?
-                    <Replay onPress={this.onPressReplay} text={this.state.text} /> : 
-                    <Upload onPress={this.onPress} text={this.state.text} selectedFile={this.state.selectedFile} updateText={this.updateText} updateFile={this.updateFile}/> }
-                </div> 
+                        <Replay
+                            onPress={this.onPressReplay}
+                            text={this.state.text}
+                            windowWidth={this.state.windowWidth}
+                            windowHeight={this.state.windowHeight}
+                        /> :
+                        <Upload
+                            onPress={this.onPress}
+                            text={this.state.text}
+                            selectedFile={this.state.selectedFile}
+                            updateText={this.updateText}
+                            updateFile={this.updateFile}
+                        />}
+                </div>
             </div>
         )
     }
 
     render() {
         return (
-            <div> 
-                { this.renderInner() }
-                <div>
-                    <button onClick={SendTest}>test</button>
-                </div>
+            <div>
+                {this.renderInner()}
             </div>
         )
     }
