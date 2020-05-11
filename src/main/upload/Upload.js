@@ -51,7 +51,7 @@ export default class Upload extends Component {
         // })
         let result = await sendTest(this.props.text);
 
-        return Promise.resolve(result)
+        return result;
     }
 
     onP(event) {
@@ -66,7 +66,7 @@ export default class Upload extends Component {
             - Check if it's a valid integer, let download service throw other errors?
             - There's more to it, but thats backend.
     */
-    onPress(url) {
+    async onPress(url) {
         if (url != null) { //Existence of url should override file
             if (!this.isValidInteger(url)) {
                 this.setState({ errorLabel: 'Invalid match id!' });
@@ -91,7 +91,9 @@ export default class Upload extends Component {
         this.setState({
             loading: true,
         })
-        this.callServer().then(this.onP)
+        let gameData = await this.callServer();
+        console.log(gameData[1]);
+        this.onP(gameData);
     }
 
     isValidInteger(id) {

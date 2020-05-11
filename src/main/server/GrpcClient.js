@@ -45,6 +45,7 @@ export async function sendTest(matchID) {
                 default:
                     console.log("unknown object:");
                     console.log(obj);
+                    break;
             }
         }
         return bytes;
@@ -89,9 +90,6 @@ export async function sendTest(matchID) {
                 beegarray[parsedReponse.getTick()].push(parsedReponse.getHero()); //this is shit retard
             }
             if (count % 1000 === 0 && amt < 10) {
-                console.log(typeof parsedReponse);
-                console.log(parsedReponse);
-                console.log(bytes);
                 count = 0;
                 amt++
             }
@@ -103,8 +101,6 @@ export async function sendTest(matchID) {
                 }
                 else {
                     console.log("done receiving");
-                    console.log(formatByteSize(bytes))
-                    console.log(beegarray);
                 }
             }
         });
@@ -115,11 +111,12 @@ export async function sendTest(matchID) {
         parseClient.parse(request, {}, function (err, response) {
             if (err != null) {
                 console.log("uh oh! error in parse method");
-                console.log(err)
+                console.log(err);
+                throw "Parse Error";
             } else {
                 console.log("done");
                 console.log(err);
-                console.log(response)
+                console.log(response);
             }
         })
     })
