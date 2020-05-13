@@ -12,6 +12,8 @@ export default class Replay extends Component {
         this.onPress = this.props.onPress;
         this.windowWidth = this.props.windowWidth;
         this.windowHeight = this.props.windowHeight;
+        //this crashes lol!
+        //document.documentElement.requestFullscreen();
         
     }
 
@@ -28,15 +30,14 @@ export default class Replay extends Component {
 
             <div>
                 <div>
-                    <StandardButton className="BackButton" function={this.onPress} buttonText={'Back'} />
-                    Replay id: {this.text}
+                    <StandardButton className="BackButton" function={this.onPress} buttonText={'<-'} />
                 </div>
                 <div className="DotaRenderContainer">
                     <DotaRender windowWidth={this.windowWidth} windowHeight={this.windowHeight}/>
                 </div>
                 
                 <div className="MiniMapContainer">
-                    <MinimapContainer length={this.windowHeight/3} />
+                    <MinimapContainer length={this.windowHeight / 1080 * 280} />
                 </div>
             </div>
         )
