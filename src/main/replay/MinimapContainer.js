@@ -11,6 +11,9 @@ export default class Minimap extends Component {
         this.length = nextProps.length;
     }
 
+
+    //Border is 1/27th the width of the minimap.
+
     render() {
         console.log(this.length);
         const minimapStyle = {
@@ -21,7 +24,7 @@ export default class Minimap extends Component {
         };
         return (
             <div style={minimapStyle}> 
-                <button />
+                
             </div>
         )
     }

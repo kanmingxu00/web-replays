@@ -92,6 +92,7 @@ export default class Upload extends Component {
             loading: true,
         })
         let gameData = await this.callServer();
+        //let gameData = null;
         console.log(gameData[1]);
         this.onP(gameData);
     }

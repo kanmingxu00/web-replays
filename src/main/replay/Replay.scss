@@ -1,4 +1,10 @@
-.ReturnButton {
+html, body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden
+}
+
+.BackButton {
 	position: absolute;
 	top: 10px;
 	left: 10px;
@@ -9,12 +15,13 @@
 	cursor: pointer;
 	text-align: center;
 	font-size: 16px;
-	border-radius: 8px;
+	border-radius: 0px;
 	transition-duration: .2s;
+
     
 }
 
-.ReturnButton:hover {
+.BackButton:hover {
 	background-color: azure;
 	border-color: #0099ff;
 	color: #0099ff;
@@ -29,6 +36,9 @@
 }
 
 .DotaRenderContainer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	z-index: -1;
 
 }
