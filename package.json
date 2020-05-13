@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "google-protobuf": "latest",
     "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loader-spinner": "^3.1.5",
@@ -16,7 +17,7 @@
     "update": "^0.7.4"
   },
   "scripts": {
-    "start": "cross-env-shell EXTEND_ESLINT=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
