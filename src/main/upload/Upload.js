@@ -15,6 +15,7 @@ export default class Upload extends Component {
             selector: false,
             loading: false,
             errorLabel: '',
+            propsUpdatedByURL: false,
         
         };
         this.onPress = this.onPress.bind(this);
@@ -24,24 +25,48 @@ export default class Upload extends Component {
         this.updateFile = this.props.updateFile.bind(this);
 
         this.getSubmitButtonText = this.getSubmitButtonText.bind(this);
+
+
+        
     }
 
     componentDidMount() {
+
         //let pathname = window.location.pathname;
-        let pathname = window.location.hash;
+        let pathname = window.location.hash.replace('#', ''); //Filter the # from hash
         //pathname = pathname.replace('/', ''); //Filter slashes from url
-        pathname = pathname.replace('#', ''); //Filter the # from hash
-    
-        if (pathname !== '') {
+        if (pathname != '') {
             this.updateText(pathname);
-            this.onPress(pathname);
+
+            if (this.urlValidation(pathname)) {
+                console.log('validation passes');
+                this.setState({ propsUpdatedByURL: true, });
+            }
+
         }
         
     }
 
+
+
+    componentDidUpdate() {
+
+        if (this.state.propsUpdatedByURL) {
+            //this.onPress(pathname);
+            this.onPress();
+            this.setState({ propsUpdatedByURL: false, });
+
+        }
+
+
+    }
+    
+
     componentWillReceiveProps(props) {
         //console.log('props updated------------');
         //this.props = props;
+
+
 
     }
 
@@ -61,24 +86,37 @@ export default class Upload extends Component {
         this.props.onPress(event)
     }
 
+
+    //This is a function declaration
+    urlValidation = (url) => {
+        if (url !== null) { //Existence of url should override file
+            if (!this.isValidInteger(url)) {
+                this.setState({ errorLabel: 'Invalid match id!' });
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
     /*
         Match id validation
             - Check if it's a valid integer, let download service throw other errors?
             - There's more to it, but thats backend.
     */
-    async onPress(url) {
-        if (url != null) { //Existence of url should override file
-            if (!this.isValidInteger(url)) {
-                this.setState({ errorLabel: 'Invalid match id!' });
-                return;
-            }
-        }
-        else if (this.props.selectedFile !== '') { //Selected file exists 
+    async onPress() {
+        /*
+        if (this.props.selectedFile !== '') { //Selected file exists 
             if (!this.isValidDem(this.props.selectedFile)) {
                 this.setState({ errorLabel: 'Demo file invalid!', });
                 return;
             }
-        } else if (this.props.text !== '') { //Text exists inside TextBox
+        } else 
+        */
+        
+        if (this.props.text !== '') { //Text exists inside TextBox
             if (!this.isValidInteger(this.props.text)) {
                 this.setState({ errorLabel: 'Please enter a valid match id!' });
                 return;
@@ -91,9 +129,9 @@ export default class Upload extends Component {
         this.setState({
             loading: true,
         })
-        let gameData = await this.callServer();
-        //let gameData = null;
-        console.log(gameData[1]);
+        //let gameData = await this.callServer();
+        let gameData = null;
+        //console.log(gameData[1]);
         this.onP(gameData);
     }
 
@@ -160,11 +198,12 @@ export default class Upload extends Component {
                     </div>
                     <div>
                         {!this.state.loading ?
-                            <StandardButton
-                                function={this.onPress}
-                                buttonText={this.getSubmitButtonText}
+                            <button
+                                onClick={this.onPress}
                                 className="SubmitReplay"
-                            /> :
+                            >
+                                {this.getSubmitButtonText()}
+                            </button> :
                             <Loader
                                 type="TailSpin"
                                 color="#00BFFF"
