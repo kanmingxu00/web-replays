@@ -199,7 +199,7 @@ export default class Upload extends Component {
                     <div>
                         {!this.state.loading ?
                             <button
-                                onClick={this.onPress}
+                                onClick={async () => {await this.onPress}}
                                 className="SubmitReplay"
                             >
                                 {this.getSubmitButtonText()}
