@@ -19,12 +19,12 @@ export default class Minimap extends Component {
         const minimapStyle = {
             width: this.length,
             height: this.length,
-            backgroundColor: 'white',
-            color: 'white',
+            backgroundColor: 'LightSlateGray',
         };
         return (
+            
             <div style={minimapStyle}> 
-                
+                <div className="MiniMap" />
             </div>
         )
     }
