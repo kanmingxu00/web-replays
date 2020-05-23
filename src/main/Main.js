@@ -10,7 +10,6 @@ export default class Main extends Component {
             switchstate: false,
             text: '',
             selectedFile: '',
-            replayFile: '',
             windowHeight: window.innerHeight,
             windowWidth: window.innerWidth,
             gameData: [],
@@ -18,6 +17,7 @@ export default class Main extends Component {
         this.onPress = this.onPress.bind(this);
         this.updateText = this.updateText.bind(this);
         this.updateFile = this.updateFile.bind(this);
+        this.replayFile = [];
         this.reportWindowSize = this.reportWindowSize.bind(this);
         this.timeoutHandle = null;
         //this.ref = React.createRef();
@@ -29,6 +29,14 @@ export default class Main extends Component {
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.reportWindowSize)
+    }
+
+    addFileData = (key, value) => {
+        if (!this.replayFile[key]) {
+            this.replayFile[key] = [];
+        }
+        this.replayFile[key].push(value);
+        console.log("called");
     }
 
     reportWindowSize = () => {
@@ -106,6 +114,7 @@ export default class Main extends Component {
                             selectedFile={this.state.selectedFile}
                             updateText={this.updateText}
                             updateFile={this.updateFile}
+                            addFileData={this.addFileData}
                         />}
                 </div>
             </div>

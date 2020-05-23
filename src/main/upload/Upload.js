@@ -5,8 +5,7 @@ import StandardButton from '../StandardButton.js';
 
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-const {sendTest} = require('../server/GrpcClient.js');
-
+import { SendTest } from '../server/GrpcClient';
 
 export default class Upload extends Component {
     constructor(props) {
@@ -20,7 +19,7 @@ export default class Upload extends Component {
         };
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
-
+        this.addFileData = this.props.addFileData.bind(this);
         this.updateText = this.props.updateText.bind(this);
         this.updateFile = this.props.updateFile.bind(this);
 
@@ -70,14 +69,15 @@ export default class Upload extends Component {
 
     }
 
+    
+
     async callServer() {
         // let fakeAPI = new Promise((resolve, reject) => {
         //     setTimeout(() => resolve(this.props.text), 1000)
         // })
         console.log("call server with " + this.props.text);
-        let result = await sendTest(this.props.text);
 
-        return result;
+        return SendTest(this.props.text, this.addFileData);
     }
 
     onP(event) {
