@@ -74,6 +74,7 @@ export default class Upload extends Component {
         // let fakeAPI = new Promise((resolve, reject) => {
         //     setTimeout(() => resolve(this.props.text), 1000)
         // })
+        console.log("call server with " + this.props.text);
         let result = await sendTest(this.props.text);
 
         return result;
@@ -129,8 +130,8 @@ export default class Upload extends Component {
         this.setState({
             loading: true,
         })
-        //let gameData = await this.callServer();
-        let gameData = null;
+        let gameData = await this.callServer();
+        // let gameData = null;
         //console.log(gameData[1]);
         this.onP(gameData);
     }
@@ -199,7 +200,7 @@ export default class Upload extends Component {
                     <div>
                         {!this.state.loading ?
                             <button
-                                onClick={async () => {await this.onPress}}
+                                onClick={this.onPress}
                                 className="SubmitReplay"
                             >
                                 {this.getSubmitButtonText()}
