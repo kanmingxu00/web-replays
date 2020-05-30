@@ -20,6 +20,7 @@ export default class Upload extends Component {
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
         this.addFileData = this.props.addFileData.bind(this);
+        this.allDataReceived = this.props.allDataReceived.bind(this);
         this.updateText = this.props.updateText.bind(this);
         this.updateFile = this.props.updateFile.bind(this);
 
@@ -75,7 +76,7 @@ export default class Upload extends Component {
         // })
         console.log("call server with " + this.props.text);
 
-        return SendTest(this.props.text, this.addFileData);
+        return SendTest(this.props.text, this.addFileData, this.allDataReceived);
     }
 
     onP(event) {

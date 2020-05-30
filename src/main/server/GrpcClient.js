@@ -57,7 +57,7 @@ function formatByteSize(bytes) {
 }
 
 
-export async function SendTest(matchID, addFileData) {
+export async function SendTest(matchID, addFileData, allDataReceived) {
 
 
     const parseClient = new ParseClient(params.address, {}, {});
@@ -88,7 +88,7 @@ export async function SendTest(matchID, addFileData) {
             // if (parsedReponse.getHero()) {
             //     beegarray[parsedReponse.getTick()].push(parsedReponse.getHero()); //this is shit retard
             // }
-            addFileData(parsedReponse.getTick(), parsedReponse.getHero())
+            addFileData(parsedReponse.getTick(), parsedReponse.getHero());
 
             if (count % 1000 === 0 && amt < 10) {
                 console.log(typeof parsedReponse);
@@ -106,7 +106,7 @@ export async function SendTest(matchID, addFileData) {
                 else {
                     console.log("done receiving");
                     console.log(formatByteSize(bytes))
-                    // console.log(beegarray);
+                    console.log(beegarray);
                 }
             }
         });
@@ -126,6 +126,8 @@ export async function SendTest(matchID, addFileData) {
                 console.log("done");
                 console.log(err);
                 console.log(response)
+                //resolve
+                allDataReceived();
             }
         })
     });
@@ -140,7 +142,7 @@ export async function SendTest(matchID, addFileData) {
     //     while(true) {
     //         // returns when you get ready message
     //     }
-    // // }) 
+    // // })
     // await readyMessage(/* Stream */)
     // run(/* Stream */)
 

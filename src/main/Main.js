@@ -36,8 +36,13 @@ export default class Main extends Component {
             this.replayFile[key] = [];
         }
         this.replayFile[key].push(value);
-        console.log("called");
-    }
+    };
+
+    allDataReceived = () => {
+        console.log("Starting replay");
+        console.log(this.replayFile);
+        console.log(this.replayFile[46587])
+    };
 
     reportWindowSize = () => {
         if (this.state.switchstate) {
@@ -115,6 +120,7 @@ export default class Main extends Component {
                             updateText={this.updateText}
                             updateFile={this.updateFile}
                             addFileData={this.addFileData}
+                            allDataReceived={this.allDataReceived}
                         />}
                 </div>
             </div>
