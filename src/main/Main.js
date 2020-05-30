@@ -71,11 +71,10 @@ export default class Main extends Component {
     }
 
 
-    onPress = (gameData) => {
+    onPress = () => {
         // this.updateText(file);
         this.setState({
-            switchstate: true,
-            gameData: gameData,
+            switchstate: true
         });
         //set url to match id.
         //window.history.replaceState(null, "Web Replays", "/" + this.state.text);
@@ -112,6 +111,7 @@ export default class Main extends Component {
                             windowWidth={this.state.windowWidth}
                             windowHeight={this.state.windowHeight}
                             gameData={this.state.gameData}
+                            replayFile={this.state.replayFile}
                         /> :
                         <Upload
                             onPress={this.onPress}

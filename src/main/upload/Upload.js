@@ -83,7 +83,7 @@ export default class Upload extends Component {
         this.setState({
             loading: false,
         })
-        this.props.onPress(event)
+        this.props.onPress()
     }
 
 
