@@ -128,7 +128,7 @@ export async function SendTest(matchID, addFileData) {
                 console.log(response)
             }
         })
-    })
+    });
 
     console.log(formatByteSize(bytes));
 

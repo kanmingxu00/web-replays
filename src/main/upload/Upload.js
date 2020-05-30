@@ -15,7 +15,7 @@ export default class Upload extends Component {
             loading: false,
             errorLabel: '',
             propsUpdatedByURL: false,
-        
+
         };
         this.onPress = this.onPress.bind(this);
         this.onP = this.onP.bind(this);
@@ -26,7 +26,7 @@ export default class Upload extends Component {
         this.getSubmitButtonText = this.getSubmitButtonText.bind(this);
 
 
-        
+
     }
 
     componentDidMount() {
@@ -43,7 +43,7 @@ export default class Upload extends Component {
             }
 
         }
-        
+
     }
 
 
@@ -59,7 +59,7 @@ export default class Upload extends Component {
 
 
     }
-    
+
 
     componentWillReceiveProps(props) {
         //console.log('props updated------------');
@@ -68,8 +68,6 @@ export default class Upload extends Component {
 
 
     }
-
-    
 
     async callServer() {
         // let fakeAPI = new Promise((resolve, reject) => {
@@ -109,27 +107,27 @@ export default class Upload extends Component {
     */
     async onPress() {
         /*
-        if (this.props.selectedFile !== '') { //Selected file exists 
+        if (this.props.selectedFile !== '') { //Selected file exists
             if (!this.isValidDem(this.props.selectedFile)) {
                 this.setState({ errorLabel: 'Demo file invalid!', });
                 return;
             }
-        } else 
+        } else
         */
-        
+
         if (this.props.text !== '') { //Text exists inside TextBox
             if (!this.isValidInteger(this.props.text)) {
                 this.setState({ errorLabel: 'Please enter a valid match id!' });
                 return;
             }
-            
+
         } else { //Neither
             this.setState({ errorLabel: 'Please enter a match id or upload a file!' });
             return;
         }
         this.setState({
             loading: true,
-        })
+        });
         let gameData = await this.callServer();
         // let gameData = null;
         //console.log(gameData[1]);
@@ -158,15 +156,15 @@ export default class Upload extends Component {
     //TODO: george
     //show the 'x' button only when a file is selected.
     render() {
-        //Old submit button: 
+        //Old submit button:
         //<SubmitButton className="SubmitReplay" loading={this.state.loading} onPress={this.onPress} text={this.props.text} selectedFile={this.props.selectedFile}/>
 
         return (
             // <Dropzone updateFile={this.updateFile} styleZone="Dropzone" styleBorder="DropzoneBorder" styleCenter="DropzoneCenter" >
-            <div className="AcceptBox"> 
+            <div className="AcceptBox">
                     <div className="DarkerBackground ThinText">Watch Dota Replays in your Browser </div>
                     <div className="DarkerBackground BoldText">
-                        Dota 2 Observer 
+                        Dota 2 Observer
                     </div>
                 <div>
                     <div>
@@ -180,9 +178,9 @@ export default class Upload extends Component {
                                     updateText={this.updateText}
                                 />
                             </div>
-                            
+
                             {/* <div>
-                                
+
                                 <UploadButton
                                     className={"FileSelect"}
                                     updateFile={this.updateFile}
